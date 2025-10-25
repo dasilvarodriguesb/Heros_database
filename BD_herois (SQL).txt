@@ -1,0 +1,334 @@
+DROP TABLE criadorpersonagem;
+DROP TABLE equipe;
+DROP TABLE grupo;
+DROP TABLE personagem;
+DROP TABLE editora;
+DROP TABLE criador;
+
+
+	
+
+Create table editora(cod_editora number(2) constraint pk_cod_editora_editora primary key, 
+nome varchar2(27) NOT NULL, 
+fundador varchar2(40));
+
+insert into editora values(1, 'Marvels', 'Martin Goodman');
+insert into editora values(2, 'DCcomics', 'Malcolm Wheeler-Nicholson');
+insert into editora values(3, 'Panini', 'Giuseppe Panini');
+insert into editora values(4, 'Dargaud','Georges Dargaud');
+
+
+DROP TABLE cidade;
+
+Create table cidade(cod_cid number(2) constraint pk_cod_cid_cidade primary key, 
+nome varchar2(15) NOT NULL, 
+pais varchar2(13));
+
+
+
+insert into cidade values(1, 'Gotham', 'EUA');
+insert into cidade values(2, 'Coast City', 'EUA');
+insert into cidade values(3, 'Atlantis', 'desconhecido');
+insert into cidade values(4, 'Nova Iorque', 'EUA');
+insert into cidade values(5, 'Novo Mexico', 'EUA');
+insert into cidade values(6, 'Moscou', 'Russia');
+insert into cidade values(7, 'Witzeldorf', 'Alemanha');
+insert into cidade values(8, 'Alberta', 'Canada');
+insert into cidade values(9, 'Metropolis', 'EUA');
+insert into cidade values(10, 'Desconhecido', 'Alemanha');
+insert into cidade values (11, 'Bauru','Brasil');
+insert into cidade values(12,'Abobrinha','Brasil');
+insert into cidade values(13,'Galia','França');
+insert into cidade values(14,'Roma','Italia');
+insert into cidade values(15,'Doomstadt','Latvéria');
+insert into cidade values(16,'Leningrado','Russia');
+insert into cidade values(17,'Cairo','Egito');
+insert into cidade values(18,'Seul','Coreia do Sul');
+
+
+Create table personagem(cod_perso number(4) constraint pk_cod_perso_personagem primary key,
+alterego    varchar2(20), 
+nm_heroi    varchar2(20), 
+apelido     varchar2(20), 
+habilidade  varchar2(25), 
+armas  varchar2(25),
+cod_cid     number(2) Constraint  fk_cidade_personagem  references cidade(cod_cid),
+cod_edit    number(2) Constraint  fk_editora_personagem  references editora(cod_editora)
+);
+
+
+insert into personagem values(1,'Bruce Wayne','BATMAN','Cavaleiro das trevas','fisico/intelecto','Batrangue e tecnologia',1,2);
+
+insert into personagem values(2,'Dick Grayson','Asa Noturna', Null, 'Acrobata','bastao',1,2);
+
+insert into personagem values(3,'Lucius Fox','Lucius Fox',Null, 'Nenhuma', Null,1,2);
+
+insert into personagem values(4,'Alfred Pennyworth','Alfred Pennyworth', null,'Nenhuma',null,1,2);
+
+insert into personagem values(5,'Harley Quinn','Arlequina','Princesa do Crime','Força por veneno','armas de fogo',1,2);
+
+insert into personagem values(6,'Jean-Paul Valley','Azrael ','Anjo vingador','Exímio lutador','armadura',1,2);
+
+insert into personagem values(7,'Jack Napier','Coringa','Joker','Quimico/Louco/inteligente','explosivos/armas de fogo',1,2);
+
+insert into personagem values(8,'Terry Gene Kase','Ras Al Ghul',Null,'Alquimista/lutador/Genio','Espada',1,2);
+
+insert into personagem values(9,'Jonathan Crane','Espantalho',Null,'psicologia do medo','gas do medo',1,2);
+
+insert into personagem values(10,'Antonio Diego','BANE',Null,'força por veneno','força bruta',1,2);
+
+insert into personagem values(11,'Harvey Dent','Duas-Caras','Janus','Obsecado por dualidade','armas de fogo',1,2);
+
+insert into personagem values(12,'Selina Kyle','Mulher-Gato','A gata','ginasta','chicote',1,2);
+
+insert into personagem values(13,'Edward Nigma','Charada',Null,'Inteligencia',Null,1,2);
+
+insert into personagem values(14,'Jervis Tetch','Chapeleiro Louco',Null,'controle da mente',null,1,2);
+
+insert into personagem values(15,'Hal Jordan','Lanterna Verde',Null,'Militar','Anel energetico',2,2);
+
+insert into personagem values(16,Null,'Sinestro',Null,null,'Anel energetico',2,2);
+
+insert into personagem values(17,'Arthur Curry','Aquaman','O Rei dos Mares','Telepatia/Sonar/força','tridente',3,2);
+
+insert into personagem values(18,'Tony Stark','Homem de Ferro','Cavaleiro de Ferro','bilionário/gênio','Armadura',4,1);
+
+insert into personagem values(19,'Matthew Murdock','Demolidor','Homem sem medo','Acrobada/Radar','Bastão',4,1);
+
+insert into personagem values(20,'Wilson Fisk','Rei do Crime',Null,'intelig/força/milionario','armas de fogo',4,1);
+
+insert into personagem values(21,'Bruce Banner','Hulk','Gigante Verde','força ilimitada',Null ,5,1);
+
+insert into personagem values(22,'Piotr Rasputin','Colossus',Null,'Transmutação em Aço',Null ,6,1);
+
+insert into personagem values(23,'Arkady Rossovich','Ômega Vermelho',Null,'Fator de cura','Tentáculos',6,1);
+
+insert into personagem values(24,'Kurt Wagner','Noturno','Azulão/demonio','Teletransporte/acrobata',Null,7,1);
+
+insert into personagem values(25,'James Logan Howlett','Wolverine','Arma X','Fator de cura','Garras de adamantium',8,1);
+
+insert into personagem values(26,'Clark Kent','Superman','Homem de aço','Super poderes',Null,9,2);
+
+insert into personagem values(27,'Lex Luthor','Lex Luthor',Null,'Genio/ bilionario',Null,9,2);
+
+insert into personagem values(28,'Erik Lehnsherr','Magneto','Mestre do magnetismo','Manipula Campo magnetico',Null,10,1);
+
+insert into personagem values(29,'Cebolácio Júnior',Null,'Cebolinha','Estrategista',Null,11,3);
+
+insert into personagem values(30,'Francisco A.Bento',Null,'Chico Bento',Null,'enxada',12,3);
+
+insert into personagem values(31,'Monica',Null,'Monica','Força, dentuça','Coelho são-são',11,3);
+
+insert into personagem values(32,'Magali',Null,'Magali','Apetite Voraz','Melancia',11,3);
+
+insert into personagem values(33,'Cássio Marques ',Null,'Cascão','velocidade','fedor, sujeita',11,3);
+
+insert into personagem values(34,'André Urvelino Mota','Capitão Feio',Null,'voar','raio de sujeira',11,3);
+
+insert into personagem values(35,'Rosa Maria',Null,'Rosinha',Null,Null,12,3);
+
+insert into personagem values(36,'Asterix ',Null,'Asterix','Inteligencia','poção mágica, espada',13,4);
+
+insert into personagem values(37,'Obelix',Null,'Gigante','Força bruta','poção mágica',13,4);
+
+insert into personagem values(38,'Panoramix',Null,'Druida','Inteligencia','poções mágicas',13,4);
+
+insert into personagem values(39,'Caio Júlio César',Null,'Cesar','estrategista','espada',14,4);
+
+insert into personagem values(40,'Victor von Doom','Dr. Destino','Dr. Doom','inteligencia, magia','Armadura, tecnologia',15,1);
+
+insert into personagem values(41,'Otto G. Octavius','Doutor Octopus',Null,'intelig., concentração','tentaculos de metal',4,1);
+
+insert into personagem values(42,'Norman Osborn','Duende Verde',Null,'intelig., vel., resis.','planador, bomba abobora',4,1);
+
+insert into personagem values(43,'Ivan Kragoff','Fantasma Vermelho',Null,'intelig., invisibilidade',Null,16,1);
+
+insert into personagem values(44,'Godfrey Calthrop','Godfrey Calthrop',Null,'Tecnopatia',Null,4,1);
+
+insert into personagem values(45,'Illyana N. Rasputin','Magia','Rainha Vermelha','Magias, voar','Espada e armadura mistica',6,1);
+
+insert into personagem values(46,'Jean Grey','Fenix','Garota Marvel','Telecinese, voar',Null,4,1);
+
+insert into personagem values(47,'Kilowog','Kilowog',null,'Engenheiro','Anel energetico',null,2);
+
+insert into personagem values(48,'Patriota ','Elijah Bradley','Eli','força, veloc.,agil.','escudo',null,1);
+
+insert into personagem values(49,'Thor Odinson','Thor','Deus do Trovão','força, veloc.,agil.','martelo Mjolnir',null,1);
+
+insert into personagem values(50,'Ororo Munroe','Tempestade','Bruxa do tempo','controle climático',null,17,1);
+
+insert into personagem values(51,'J.A.R.V.I.S.','Visão',null,'Rajadas mentai',null,18,1);
+
+
+
+
+
+DROP TABLE criador;
+
+Create table criador(cod_criador number(2) constraint pk_cod_criado_criador primary key, 
+nome varchar2(20) NOT NULL, 
+pais varchar2(10));
+
+insert into criador values(1, 'Stan Lee', 'EUA');
+insert into criador values(2, 'Bob Kane', 'EUA');
+insert into criador values(3, 'Len Wein', 'EUA');
+insert into criador values(4, 'Paul Dini', 'EUA');
+insert into criador values(5, 'Jean-Paul Valley', 'EUA');
+insert into criador values(6, 'Neal Adams', 'EUA');
+insert into criador values(7, 'Chuck Dixon', 'EUA');
+insert into criador values(8, 'Bill Finger', 'EUA');
+insert into criador values(9, 'John Broome', 'EUA');
+insert into criador values(10, 'Paul Norris', 'EUA');
+insert into criador values(11, 'Len Wein', 'EUA');
+insert into criador values(12, 'Jim Lee','EUA');
+insert into criador values(13, 'Jerry Siegel','EUA');
+insert into criador values(14, 'Mauricio de Sousa','Brasil');
+insert into criador values(15, 'Albert Uderzo','França');
+insert into criador values(16, 'René Goscinny','França');
+insert into criador values(17, 'Chris Claremont','Inglaterra');
+insert into criador values(18, 'Steve Englehart','EUA');
+insert into criador values(19, 'Allan Heinberg','EUA');
+insert into criador values(20, 'Roy Thomas','EUA');
+
+  
+
+create table criadorpersonagem(
+cod_cria number(3) Constraint fk_cod_cria_criadorpersonagem  references criador (cod_criador), 
+cod_persona number(3) Constraint fk_cod_perso_criadorpersonagem  references personagem (cod_perso), 
+Ano number(4),
+Constraint pk_XXXX_criadorpersonagem  primary key(cod_cria, cod_persona));
+
+insert into criadorpersonagem values(20,51,1968);
+insert into criadorpersonagem values(1,49,1962);
+insert into criadorpersonagem values(3,50,1975);
+insert into criadorpersonagem values(19,48,2005);
+insert into criadorpersonagem values(1,46,1963);
+insert into criadorpersonagem values(17,45,1975);
+insert into criadorpersonagem values(1,42,1964);
+insert into criadorpersonagem values(1,41,1963);
+insert into criadorpersonagem values(1,40,1962);
+insert into criadorpersonagem values(1,43,1963);
+insert into criadorpersonagem values(15,36,1959);
+insert into criadorpersonagem values(18,47,1986);
+insert into criadorpersonagem values(15,37,1959);
+insert into criadorpersonagem values(17,44,1963);
+insert into criadorpersonagem values(15,38,1959);
+insert into criadorpersonagem values(15,39,1959);
+insert into criadorpersonagem values(16,36,1959);
+insert into criadorpersonagem values(16,37,1959);
+insert into criadorpersonagem values(16,38,1959);
+insert into criadorpersonagem values(16,39,1959);
+insert into criadorpersonagem values(14,29,1960);
+insert into criadorpersonagem values(14,30,1960);
+insert into criadorpersonagem values(14,31,1963);
+insert into criadorpersonagem values(14,32,1963);
+insert into criadorpersonagem values(14,33,1961);
+insert into criadorpersonagem values(14,34,1972);
+insert into criadorpersonagem values(14,35,1961);
+insert into criadorpersonagem values(2,9,1941);
+insert into criadorpersonagem values(2,11,1942);
+insert into criadorpersonagem values(2,1,1939);
+insert into criadorpersonagem values(2,2,1940);
+insert into criadorpersonagem values(3,3,1979);
+insert into criadorpersonagem values(2,4,1943);
+insert into criadorpersonagem values(4,5,1992);
+insert into criadorpersonagem values(5,6,1992);
+insert into criadorpersonagem values(6,7,1971);
+insert into criadorpersonagem values(2,8,1941);
+insert into criadorpersonagem values(7,10,1993);
+insert into criadorpersonagem values(2,12,1940);
+insert into criadorpersonagem values(8,13,1948);
+insert into criadorpersonagem values(2,14,1948);
+insert into criadorpersonagem values(9,15,1959);
+insert into criadorpersonagem values(9,16,1961);
+insert into criadorpersonagem values(10,17,1941);
+insert into criadorpersonagem values(1,18,1963);
+insert into criadorpersonagem values(1,19,1964);
+insert into criadorpersonagem values(1,20,1967);
+insert into criadorpersonagem values(1,21,1962);
+insert into criadorpersonagem values(11,22,1975);
+insert into criadorpersonagem values(12,23,1975);
+insert into criadorpersonagem values(11,24,1975);
+insert into criadorpersonagem values(11,25,1974);
+insert into criadorpersonagem values(13,26,1938);
+insert into criadorpersonagem values(13,27,1940);
+insert into criadorpersonagem values(1,28,1963);
+
+
+Create table grupo(cod_grupo number(2) constraint pk_cod_grupo_grupo primary key, 
+nome varchar2(30) NOT NULL);
+
+insert into grupo values(1, 'Solitario');
+insert into grupo values(2, 'X_men');
+insert into grupo values(3, 'Esquadrão suicida');
+insert into grupo values(4, 'Irmandade mutante');
+insert into grupo values(5, 'Liga da justiça');
+insert into grupo values(6, 'Jovens titans');
+insert into grupo values(7, 'esquadrão suicida');
+insert into grupo values(8, 'Ordem de São Dumas');
+insert into grupo values(9, 'Sociedade das sombras');
+insert into grupo values(10, 'Liga da injustiça');
+insert into grupo values(11, 'Sexteto Secreto');
+insert into grupo values(12, 'Soc. Secreta de Supervilões');
+insert into grupo values(13, 'Novos Vigadores');
+insert into grupo values(14, 'Tropa Alfa');
+insert into grupo values(15, 'Vingadores');
+insert into grupo values(16, 'Turma da Monica');
+insert into grupo values(17, 'Tropa dos lanternas verdes');
+insert into grupo values(18, 'Jovens vingadores');
+
+
+
+create table equipe(
+cod_grup number(3) Constraint fk_cod_grup_equipe  references grupo(cod_grupo), 
+cod_personag number(3) Constraint fk_cod_personag_equipe  references personagem (cod_perso), 
+Constraint pk_composta_grupo  primary key(cod_grup, cod_personag));
+
+
+insert into equipe values(2,50);
+insert into equipe values(15,49);
+insert into equipe values(15,51);
+insert into equipe values(18,48);
+insert into equipe values(17,47);
+insert into equipe values(17,15);
+insert into equipe values(2,46);
+insert into equipe values(2,45);
+insert into equipe values(5,1);
+insert into equipe values(6,2);
+insert into equipe values(1,3);
+insert into equipe values(1,4);
+insert into equipe values(7,5);
+insert into equipe values(8,6);
+insert into equipe values(7,7);
+insert into equipe values(10,7);
+insert into equipe values(9,8);
+insert into equipe values(10,9);
+insert into equipe values(7,10);
+insert into equipe values(1,11);
+insert into equipe values(10,12);
+insert into equipe values(10,13);
+insert into equipe values(11,14);
+insert into equipe values(5,15);
+insert into equipe values(10,16);
+insert into equipe values(12,16);
+insert into equipe values(5,17);
+insert into equipe values(15,18);
+insert into equipe values(13,19);
+insert into equipe values(1,20);
+insert into equipe values(16,29);
+insert into equipe values(16,30);
+insert into equipe values(16,31);
+insert into equipe values(16,32);
+insert into equipe values(16,33);
+insert into equipe values(16,34);
+insert into equipe values(15,21);
+insert into equipe values(2,22);
+insert into equipe values(4,23);
+insert into equipe values(2,24);
+insert into equipe values(2,25);
+insert into equipe values(15,25);
+insert into equipe values(14,25);
+insert into equipe values(5,26);
+insert into equipe values(12,27);
+insert into equipe values(4,28);
+insert into equipe values(11,41);
