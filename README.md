@@ -24,7 +24,7 @@ O diagrama ilustra as entidades principais e seus relacionamentos, como mostrado
 
 **As tabelas descritas estão relacionadass conforme diagrama abaixo:**
 
-<img src="/IMG/DER.png" alt="DER" width="30%"/>
+<img src="/IMG/DER.png" alt="DER" width="70%"/>
 ---
 
 ## 🗃️ Estrutura das Tabelas
